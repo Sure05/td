@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import {Container, Grid} from "semantic-ui-react";
+import Options from "./app/settings/options";
+import Game from "./app/components/Game";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [gameData, setGameData] = useState({
+		towerRange: null,
+		enemyList: []
+	})
+	const start = (data) => {
+		setGameData(data)
+	}
+	return (
+		<Container>
+			<Grid>
+				<Grid.Row columns={2}>
+					<Grid.Column width={5}>
+						<Game options={gameData} />
+					</Grid.Column>
+					<Grid.Column width={11}>
+						<Options start={start}/>
+					</Grid.Column>
+				</Grid.Row>
+			</Grid>
+		</Container>
+	);
 }
 
 export default App;
