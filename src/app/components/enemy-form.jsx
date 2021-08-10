@@ -42,7 +42,9 @@ function EnemyForm({addElement}) {
 				<label>Speed</label>
 				<Input value={speed} onChange={(event, {value}) => setSpeed(parseInt(value))} fluid placeholder='Example: 25'/>
 			</Form.Field>
-			<Button onClick={() => addEnemy()}>Add enemy</Button>
+			<div>
+				<Button onClick={() => addEnemy()}>Add bot</Button>
+			</div>
 		</Form.Group>
 	);
 }
