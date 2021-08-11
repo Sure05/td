@@ -24,28 +24,32 @@ function EnemyForm({addElement}) {
 			distance,
 			speed
 		};
-		addElement(data)
+		
+		if (distance > 0 && speed > 0 )
+			addElement(data)
 	}
 	
 	return (
-		<Form.Group widths='equal'>
-			<Form.Field>
-				<label>Name</label>
-				<Input value={name} onChange={(event, {value}) => setName(value)} fluid placeholder='Name'/>
-			</Form.Field>
-			<Form.Field>
-				<label>Distance</label>
-				<Input value={distance} onChange={(event, {value}) => setDistance(parseInt(value))} type="number" fluid
-				       placeholder='Example: 100'/>
-			</Form.Field>
-			<Form.Field>
-				<label>Speed</label>
-				<Input value={speed} onChange={(event, {value}) => setSpeed(parseInt(value))} fluid placeholder='Example: 25'/>
-			</Form.Field>
-			<div>
-				<Button onClick={() => addEnemy()}>Add bot</Button>
-			</div>
-		</Form.Group>
+		<>
+			<Form.Group widths='equal'>
+				<Form.Field required>
+					<label>Name</label>
+					<Input value={name} onChange={(event, {value}) => setName(value)} fluid placeholder='Name'/>
+				</Form.Field>
+				<Form.Field required>
+					<label>Distance</label>
+					<Input value={distance} onChange={(event, {value}) => setDistance(parseInt(value))} type="number"
+					       fluid
+					       placeholder='Example: 100'/>
+				</Form.Field>
+				<Form.Field required>
+					<label>Speed</label>
+					<Input value={speed} onChange={(event, {value}) => setSpeed(parseInt(value))} fluid
+					       placeholder='Example: 25'/>
+				</Form.Field>
+			</Form.Group>
+			<Button onClick={() => addEnemy()}>Add bot</Button>
+		</>
 	);
 }
 
